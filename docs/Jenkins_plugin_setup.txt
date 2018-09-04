@@ -1,0 +1,89 @@
+                                                             Jenkins and New Plugin Set Up
+____________________________________________________________________________________________________________________________
+
+Java Set Up
+
+1. sudo add-apt-repository ppa:webupd8team/java gpg: key EEA14886: public key "Launchpad VLC" imported
+2. sudo apt update
+3. sudo apt install oracle-java8-installer
+4. sudo apt install oracle-java8-set-default
+5. vi .bashrc
+  (Add following two lines at end of file)
+  export JAVA_HOME=/usr
+  export PATH=$JAVA_HOME/bin:$PATH
+6. javac -version
+_____________________________________________________________________________________________________________________________
+
+Jenkins Set Up
+
+1. cd /tmp && wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+2. echo 'deb https://pkg.jenkins.io/debian-stable binary/' | sudo tee -a /etc/apt/sources.list.d/jenkins.list
+3. sudo apt update
+4. sudo apt install jenkins
+5. sudo systemctl enable jenkins.service
+6. sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+   (Note Down AdminPassword)
+7. sudo ufw status
+  (if disable then,run following 3 commands)
+   sudo ufw enable
+   sudo ufw allow 8080
+   sudo ufw status
+8. (Open following URL in Web Browser)
+    http://<Public Ip>
+    enter initialAdminPassword
+    Create a new User 
+__________________________________________________________________________________________________________________________
+
+Maven Set Up
+
+1. cd /opt
+2. sudo wget www.trieuvan.com/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.zip
+3. sudo unzip apache-maven-3.5.4-bin.zip
+4. sudo mv apache-maven-3.5.4/ apache-maven/
+5. cd /etc/profile.d/
+6. sudo vi maven.sh
+   (Create a new file if not there)
+   # Apache Maven Environment Variables
+   # MAVEN_HOME for Maven 1 - M2_HOME for Maven 2
+   export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+   export M2_HOME=/opt/apache-maven
+   export MAVEN_HOME=/opt/apache-maven
+   export PATH=${M2_HOME}/bin:${PATH}
+
+7. sudo chmod +x maven.sh
+8. source maven.sh
+9. mvn -v
+_________________________________________________________________________________________________________________________
+
+Create and Edit New Plugin
+_____________________________________________________________________________________________________________________________
+1. mvn -U archetype:generate -Dfilter=io.jenkins.archetypes:
+  (Choose following)
+  4 (hello-world-plugin)
+  Choose a number:5 (1.4)
+  Define value for property 'artifactId': build-notification(give any Name)
+  Define value for property 'version' 1.0-SNAPSHOT(Enter)
+  package: io.jenkins.plugins.sample Y: : y 
+2. (stop Jenkins if it is running)
+3. sudo systemctl stop jenkins.service
+4. cd build-notification 
+5.  need to edit following files to create a Build Verification project
+    src/main/java/io/jenkins/plugins/sample/HelloWorldBuilder.java
+    src/test/java/io/jenkins/plugins/sample/HelloWorldBuilderTest.java
+    src/main/resources/io/jenkins/plugins/sample/HelloWorldBuilder/config.jelly
+    pom.xml
+7. mvn hpi:run
+6. (open following url in browser to verify)
+   http://<Public Ip>/jenkins/
+7. Create a new item FreeStyle project
+8. Now go to project configure
+9. Build Step choose "Build Notification" and enter token and product Id 
+10. Build Project
+11. press Ctrl+c to stop this Jenkins Plugin
+12. mvn package
+13. sudo cp build-notification/target/build-notification.hpi /var/lib/jenkins/plugin
+14. sudo systemctl start jenkins.service
+15. search Build Notifications in installed jenkins(Manage Jenkins-> Manage Plugin -> Installed)
+
+__________________________________________________________________________________________________________________________
+
