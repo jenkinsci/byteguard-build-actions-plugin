@@ -19,6 +19,6 @@ Below are the steps to use byteguard-build-actions plugin.
 	*To delete the current task:
 * In these responses you will see task id of the task you have created.
 * Now on Jenkins got to your project -> configure -> Add Build Step ->  ByteGuard Build Actions
-![Alt text](https://github.com/KernelLabs/Byteguard-Build-Actions/blob/bugfix/docs/s3.png "Jenkins")
+![Alt text](https://github.com/KernelLabs/Byteguard-Build-Actions/blob/bugfix/docs/jenkins.png "Jenkins")
 * Enter your API TOKEN in Token field and Task ID in Product field.
 * Now people who were added to this task will get notifications during build. 
