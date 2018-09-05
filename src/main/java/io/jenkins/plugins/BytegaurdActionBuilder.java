@@ -73,7 +73,7 @@ public class BytegaurdActionBuilder extends Builder implements SimpleBuildStep {
 	}
      }
 
-    @Symbol("greet")
+    @Symbol("byteguardGreet")
     @Extension
     public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
 
