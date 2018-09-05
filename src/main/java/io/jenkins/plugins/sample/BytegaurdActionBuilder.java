@@ -93,7 +93,7 @@ public class BytegaurdActionBuilder extends Builder implements SimpleBuildStep {
 
         @Override
         public String getDisplayName() {
-            return "Bytegaurd Jenkins Build Actions";
+            return "ByteGuard Build Actions";
         }
 
     }
