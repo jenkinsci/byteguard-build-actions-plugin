@@ -13,12 +13,12 @@ Below are the steps to use byteguard-build-actions plugin.
 	* Add people with phone or email id.
 	* select a language(bash,javascript,python).
 * Click on Create Task
-* This will show you step4 Integrate that will show you three bash script/javascript/python codes.
+* Now you will see step4 Integrate in which you will get three bash script/javascript/python codes.
 	*To prompt the participants for a response, use the following code snippet:
         *To check the responses gathered so far:
 	*To delete the current task:
 * In these responses you will see task id of the task you have created.
 * Now on Jenkins got to your project -> configure -> Add Build Step ->  ByteGuard Build Actions
 ![Alt text](https://github.com/KernelLabs/Byteguard-Build-Actions/blob/bugfix/docs/s3.png?raw=true "Jenkins")
-* Enter your API TOKEN in Token field and Task id in Product field.
-* Now people of this task will get notifications during build. 
+* Enter your API TOKEN in Token field and Task ID in Product field.
+* Now people who were added to this task will get notifications during build. 
