@@ -21,7 +21,7 @@
           ~ stapler-plugin.version: The Stapler Maven plugin version required by the plugin.
      -->
     </properties>
-    <name>Bytegaurd Build Actions</name>
+    <name>ByteGuard Build Actions</name>
     <description>Bytegaurd Build Actions enable notification during build</description>
     <!-- The default licence for Jenkins OSS Plugins is MIT. Substitute for the applicable one if needed. -->
     <licenses>
