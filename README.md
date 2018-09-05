@@ -7,7 +7,7 @@ Below are the steps to use byteguard-build-actions plugin.
 
 
 * you will get an API Token with login automatically.
-* you need to specify name or your task and message.
+* you need to specify name of your task and message.
 	* choose an answer format(Approval, Numeric, Text etc.)
 	* choose a Consensus Rule(single,simple majority,many etc.)
 	* Add people with phone or email id.
