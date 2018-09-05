@@ -1,4 +1,4 @@
-package io.jenkins.plugins.sample;
+package io.jenkins.plugins;
 
 import hudson.model.FreeStyleBuild;
 import hudson.model.FreeStyleProject;
@@ -16,13 +16,13 @@ public class BytegaurdActionBuilderTest {
     public JenkinsRule jenkins = new JenkinsRule();
 
     final String token =(System.getenv("TOKEN"));
-    final String product =(System.getenv("PRODUCT"));
+    final String task_id =(System.getenv("TASK"));
 
     @Test
     public void testConfigRoundtrip() throws Exception {
         FreeStyleProject project = jenkins.createFreeStyleProject();
-        project.getBuildersList().add(new BytegaurdActionBuilder(token,product));
+        project.getBuildersList().add(new BytegaurdActionBuilder(token,task_id));
         project = jenkins.configRoundtrip(project);
-        jenkins.assertEqualDataBoundBeans(new BytegaurdActionBuilder(token,product), project.getBuildersList().get(0));
+        jenkins.assertEqualDataBoundBeans(new BytegaurdActionBuilder(token,task_id), project.getBuildersList().get(0));
     }
 }
