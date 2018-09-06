@@ -3,7 +3,7 @@
     <f:entry title="${%Token}" field="token">
         <f:textbox />
     </f:entry>
-     <f:entry title="${%Product}" field="product">
+     <f:entry title="${%Task_id}" field="task_id">
       	<f:textbox />
     </f:entry>
 </j:jelly>

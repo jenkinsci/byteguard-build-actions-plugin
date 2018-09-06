@@ -1,4 +1,4 @@
-package io.jenkins.plugins.sample;
+package io.jenkins.plugins;
 
 import hudson.Launcher;
 import hudson.Extension;
@@ -29,26 +29,26 @@ import java.io.OutputStreamWriter;
 public class BytegaurdActionBuilder extends Builder implements SimpleBuildStep {
 
     private final String token;
-    private final String product;
+    private final String task_id;
 
     @DataBoundConstructor
-    public BytegaurdActionBuilder(String token,String product) {
+    public BytegaurdActionBuilder(String token,String task_id) {
         this.token = token;
-        this.product = product;
+        this.task_id = task_id;
     }
 
     public String getToken() {
         return token;
     }
 
-     public String getProduct() {
-        return product;
+     public String getTask_id() {
+        return task_id;
     }
 
     @Override
     public void perform(Run<?, ?> run, FilePath workspace, Launcher launcher, TaskListener listener) throws InterruptedException, IOException {
          try{
-             	String url = "https://byteguard.io/api/tasks/"+product+"/trigger/";
+             	String url = "https://byteguard.io/api/tasks/"+task_id+"/trigger/";
              	URL obj = new URL(url);
              	HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
 
