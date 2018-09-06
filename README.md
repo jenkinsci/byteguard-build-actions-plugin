@@ -3,9 +3,9 @@
 Below are the steps to use byteguard-build-actions plugin.
 * go to link https://byteguard.io/accounts/login/
 * Login with either Github or Slack
-![Alt text](https://github.com/KernelLabs/Byteguard-Build-Actions/blob/bugfix/docs/s1.png?raw=true "Login")
+![Alt text](docs/s1.png?raw=true "Login")
 * This page will open.
-![Alt text](https://github.com/KernelLabs/Byteguard-Build-Actions/blob/bugfix/docs/s2.png?raw=true)
+![Alt text](docs/s2.png?raw=true)
 * You will get an API Token with login automatically.
 * You need to specify name of your task and message.
 	* Choose an answer format(Approval, Numeric, Text etc.)
