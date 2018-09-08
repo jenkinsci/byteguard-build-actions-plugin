@@ -25,6 +25,7 @@ import java.net.URL;
 import java.net.Proxy;
 import java.net.InetSocketAddress;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 public class BytegaurdActionBuilder extends Builder implements SimpleBuildStep {
 
@@ -59,15 +60,18 @@ public class BytegaurdActionBuilder extends Builder implements SimpleBuildStep {
 
              	conn.setRequestMethod("POST");
              	conn.connect();
-             	InputStreamReader in_strm = new InputStreamReader(conn.getInputStream());
-
-             	int t;
-             	String read_reslt="";
-            	 while((t = in_strm.read()) != -1)
+             	
+                InputStreamReader in_strm = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8);
+                BufferedReader br = new BufferedReader(in_strm);
+                StringBuilder read_result = new StringBuilder();
+             	String line="";
+            	while((line = br.readLine()) != null)
              	{
-                    read_reslt = read_reslt+(char)t;
+                    read_result.append(line);
              	}
-             	listener.getLogger().println(read_reslt);
+             	listener.getLogger().println(read_result.toString());
+
+                conn.disconnect();
              }catch(Exception e) {
 		listener.getLogger().println(e);
 	}
