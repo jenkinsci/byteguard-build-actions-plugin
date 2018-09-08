@@ -61,16 +61,17 @@ public class BytegaurdActionBuilder extends Builder implements SimpleBuildStep {
              	conn.setRequestMethod("POST");
              	conn.connect();
              	
-                InputStreamReader in_strm = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8);
-                BufferedReader br = new BufferedReader(in_strm);
-                StringBuilder read_result = new StringBuilder();
+                InputStreamReader is = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8);
+                BufferedReader br = new BufferedReader(is);
+                StringBuilder readResult = new StringBuilder();
              	String line="";
             	while((line = br.readLine()) != null)
              	{
-                    read_result.append(line);
+                    readResult.append(line);
              	}
-             	listener.getLogger().println(read_result.toString());
+             	listener.getLogger().println(readResult.toString());
 
+                is.close();
                 conn.disconnect();
              }catch(Exception e) {
 		listener.getLogger().println(e);
