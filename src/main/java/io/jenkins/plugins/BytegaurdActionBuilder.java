@@ -71,6 +71,7 @@ public class BytegaurdActionBuilder extends Builder implements SimpleBuildStep {
              	}
              	listener.getLogger().println(readResult.toString());
 
+                br.close();
                 is.close();
                 conn.disconnect();
              }catch(Exception e) {
